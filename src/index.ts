@@ -144,7 +144,7 @@ class ServerlessOfflineSns {
         this.debug("subs!: " + JSON.stringify(subs));
         await Promise.all(
             subs.Subscriptions
-                .filter(sub => this.config['sns-subscribe-endpoint'] ? sub.Endpoint.indexOf("//" + this.config['sns-subscribe-endpoint']) > -1 : 1)
+                .filter(sub => this.config["sns-subscribe-endpoint"] ? sub.Endpoint.indexOf("//" + this.config["sns-subscribe-endpoint"]) > -1 : 1)
                 .filter(sub => sub.Endpoint.indexOf(":" + this.remotePort) > -1)
                 .filter(sub => sub.SubscriptionArn !== "PendingConfirmation")
                 .map(sub => this.snsAdapter.unsubscribe(sub.SubscriptionArn)));
